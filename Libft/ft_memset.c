@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 18:04:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/18 18:04:59 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/18 17:57:39 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/18 17:57:39 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-#define LIBFT_H
+#include"libft.h"
 
-#include"stdlib.h"
+void *ft_memset(void *addr, int ch, size_t n)
+{
+    int i;
 
-void *ft_memset(void *addr, int ch, size_t n);
-
-#endif
+    i = 0;
+    while(i < n)
+    {
+        *((int *)addr + i) = ch;
+        i++;
+    }
+    return (addr);
+}
