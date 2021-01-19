@@ -1,6 +1,6 @@
 CFLAG = -Wall -Wextra -Werror -c
 NAME = libft.a
-SRCS = ft_memset.c
+SRCS = ft_memset.c ft_bzero.c ft_memcpy.c
 OBJS = ${SRCS:.c=.o}
 AR = ar rc
 RM = rm -f
