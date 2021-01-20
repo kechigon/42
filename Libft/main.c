@@ -7,6 +7,5 @@ int main(void)
 	char str[10] = "abcdefghi\0";
 
 	printf("%p\n", str);
-	ft_memmove(str, str, 3);
-	printf("%s\n", str);
+	printf("%p\n", ft_memchr(str, 'e', 2));
 }
