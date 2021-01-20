@@ -4,12 +4,16 @@
 
 int main(void)
 {
-        char str[] = "0123456789";
-		char str2[] = "1111111";
-        ft_memcpy(str + 2, str2, 5);
-		printf("%s\n", str);
+    int len;
+	char *str1 = "bbcdefg";
+	char str2[10] = "aaaaaa";
+
+	printf("%s\n", (char *)ft_memccpy(str2, str1, 'd', 5));
+
+	str2[4] = '\0';
+	printf("%s\n", str2);
 		/*for(int i = 0; i < 10; i++)
 		{
-			printf("%c\n", str[i]);
+			printf("%d\n", str[i]);
 		}*/
 }

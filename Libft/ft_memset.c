@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:57:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/19 19:43:11 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/20 12:17:24 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	*ft_memset(void *addr, int c, size_t n)
 	uc = (unsigned char)c;
 	while (n--)
 	{
-		*s = uc;
-		s++;
+		*s++ = uc;
 	}
 	return (addr);
 }

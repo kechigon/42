@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:25:54 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/19 20:08:55 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/20 11:52:15 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_bzero(void *addr, size_t n)
 {
-	unsigned char *s;
-
-	s = (unsigned char *)addr;
-	while (n--)
-	{
-		*s = 0;
-		s++;
-	}
+	ft_memset(addr, 0, n);
 }

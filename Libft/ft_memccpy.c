@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 18:04:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/20 12:37:54 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/20 11:55:10 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/20 17:09:09 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "stdlib.h"
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+{
+	unsigned char		*s;
+	const unsigned char *s2;
+	unsigned char		uc;
 
-void	*ft_memset(void *addr, int c, size_t n);
-void	ft_bzero(void *addr, size_t n);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
-
-#endif
+	s = (unsigned char *)dest;
+	s2 = (const unsigned char *)src;
+	uc = (unsigned char)c;
+	while (n--)
+	{
+		if ((*s++ = *s2++) == uc)
+		{
+			return (s);
+		}
+	}
+	return (NULL);
+}
