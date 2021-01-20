@@ -4,16 +4,9 @@
 
 int main(void)
 {
-    int len;
-	char *str1 = "bbcdefg";
-	char str2[10] = "aaaaaa";
+	char str[10] = "abcdefghi\0";
 
-	printf("%s\n", (char *)ft_memccpy(str2, str1, 'd', 5));
-
-	str2[4] = '\0';
-	printf("%s\n", str2);
-		/*for(int i = 0; i < 10; i++)
-		{
-			printf("%d\n", str[i]);
-		}*/
+	printf("%p\n", str);
+	ft_memmove(str, str, 3);
+	printf("%s\n", str);
 }

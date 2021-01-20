@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 18:04:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/20 18:20:24 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/20 18:21:33 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/20 19:47:50 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "stdlib.h"
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char		*s;
+	const char	*s2;
 
-void	*ft_memset(void *addr, int c, size_t n);
-void	ft_bzero(void *addr, size_t n);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
-void	*ft_memmove(void *dest, const void *src, size_t n);
-
-#endif
+	s = (char *)dest;
+	s2 = (const char *)src;
+	if (s > s2)
+	{
+		while (n--)
+		{
+			*(s + n) = *(s2 + n);
+		}
+	}
+	else if (s < s2)
+	{
+		while (n--)
+		{
+			*s++ = *s2++;
+		}
+	}
+	return (dest);
+}
