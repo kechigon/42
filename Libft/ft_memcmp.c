@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/19 20:14:55 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/21 12:18:10 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/21 12:16:59 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/21 12:34:04 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_memcmp(const void *addr1, const void *addr2, size_t n)
 {
-	char		*s1;
-	const char	*s2;
+	const unsigned char *s1;
+	const unsigned char *s2;
 
-	s1 = (char *)dest;
-	s2 = (const char *)src;
+	s1 = (const unsigned char *)addr1;
+	s2 = (const unsigned char *)addr2;
 	while (n--)
 	{
-		*s1++ = *s2++;
+		if (*s1++ != *s2++)
+		{
+			return (*(s1 - 1) < *(s2 - 1) ? -1 : 1);
+		}
 	}
-	return (dest);
+	return (0);
 }
