@@ -4,8 +4,8 @@
 
 int main(void)
 {
-	printf("%d\n", ft_memcmp("abcd", "abcd", 4));
-	printf("%d\n", ft_memcmp("abcd", "abed", 4));
-	printf("%d\n", ft_memcmp("abcd", "abad", 4));
-	printf("%d\n", ft_memcmp("abcd", "abad", 0));
+	char *s = "abcdefg";
+	char *s2 = "hijklmnop";
+	ft_strlcpy(s, s2, sizeof(s));
+	printf("%s\n", s);
 }
