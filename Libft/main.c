@@ -4,7 +4,5 @@
 
 int main(void)
 {
-	char *s = "abcdefg";
-	char *s2 = "hijklmnop";
-	printf("%d\n", strlcat(s2, s, 17));
+	printf("%s\n", ft_strnstr("lorem ipsum dolor sit amet", "lorem", 15));
 }

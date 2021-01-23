@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:04:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/23 22:23:44 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/23 23:27:15 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t maxlen);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char*	ft_strnstr(const char *s1, const char *s2, size_t len);
 
 #endif
