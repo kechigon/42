@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 11:55:10 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/23 20:10:30 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/23 18:15:21 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/23 21:28:08 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned char		*s1;
-	const unsigned char	*s2;
-	unsigned char		uc;
+	size_t	dest_index;
 
-	s1 = (unsigned char *)dest;
-	s2 = (const unsigned char *)src;
-	uc = (unsigned char)c;
-	while (n--)
-	{
-		if ((*s1++ = *s2++) == uc)
-			return (s1);
-	}
-	return (NULL);
+	dest_index = ft_strlen(dest);
+	while (*src && dest_index + 1 < size)
+		*(dest + dest_index++) = *src++;
+	*(dest + dest_index) = '\0';
+	return (ft_strlen(src) + (dest_index < size ? dest_index : size));
 }

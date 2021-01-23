@@ -6,6 +6,5 @@ int main(void)
 {
 	char *s = "abcdefg";
 	char *s2 = "hijklmnop";
-	ft_strlcpy(s, s2, sizeof(s));
-	printf("%s\n", s);
+	printf("%d\n", strlcat(s2, s, 17));
 }

@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:14:55 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/21 12:18:10 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/23 20:11:06 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	s1 = (char *)dest;
 	s2 = (const char *)src;
 	while (n--)
-	{
 		*s1++ = *s2++;
-	}
 	return (dest);
 }

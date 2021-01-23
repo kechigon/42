@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:16:13 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/21 17:32:53 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/23 20:11:59 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t len;
 
 	len = 0;
-	while(*s++)
-	{
+	while (*s++)
 		len++;
-	}
 	return (len);
 }

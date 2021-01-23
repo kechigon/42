@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:16:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/21 12:34:04 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/23 20:10:54 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	ft_memcmp(const void *addr1, const void *addr2, size_t n)
 	while (n--)
 	{
 		if (*s1++ != *s2++)
-		{
 			return (*(s1 - 1) < *(s2 - 1) ? -1 : 1);
-		}
 	}
 	return (0);
 }

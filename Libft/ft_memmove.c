@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 18:21:33 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/21 12:18:32 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/23 20:11:21 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	if (s1 > s2)
 	{
 		while (n--)
-		{
 			*(s1 + n) = *(s2 + n);
-		}
 	}
 	else if (s1 < s2)
 	{
 		while (n--)
-		{
 			*s1++ = *s2++;
-		}
 	}
 	return (dest);
 }
