@@ -1,6 +1,6 @@
 CFLAG = -Wall -Wextra -Werror -c -g
 NAME = libft.a
-SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c
+SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c
 OBJS = ${SRCS:.c=.o}
 AR = ar rc
 RM = rm -f
@@ -26,5 +26,8 @@ exe: ${NAME} main.o
 
 main.o: main.c
 	gcc -c -g main.c
+
+test:
+	bash ../../Libftest/grademe.sh
 
 .PHONY: all, clean, fclean, re, test
