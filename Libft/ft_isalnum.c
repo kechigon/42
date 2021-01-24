@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/24 16:09:09 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/24 17:09:41 by kkurita          ###   ########.fr       */
+/*   Created: 2021/01/24 17:37:44 by kkurita           #+#    #+#             */
+/*   Updated: 2021/01/24 17:39:58 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t size)
+int	ft_isalnum(int c)
 {
-	unsigned char *str1;
-	unsigned char *str2;
-
-	str1 = (unsigned char*)s1;
-	str2 = (unsigned char*)s2;
-	while ((*str1 || *str2) && size--)
-	{
-		if (*str1++ != *str2++)
-			return (*(str1 - 1) < *(str2 - 1) ? -1 : 1);
-	}
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

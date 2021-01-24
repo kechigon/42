@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:11:50 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/24 15:45:37 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/24 17:49:36 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_atoi(const char *s)
 		if (*s++ == '-')
 			sign = -1;
 	}
-	while ('0' <= *s && *s <= '9')
+	while (ft_isdigit(*s))
 	{
 		if (ans > ov_div || (ans == ov_div && *s > ov_mod))
 			return ((int)LONG_MAX);
