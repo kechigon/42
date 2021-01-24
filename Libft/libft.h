@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:04:59 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/24 18:13:33 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/24 19:17:11 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	*ft_calloc(size_t number, size_t size);
+char	*ft_strdup(const char *s);
 
 #endif
