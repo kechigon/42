@@ -6,5 +6,5 @@
 
 int main(void)
 {
-	printf("%c\n",tolower('a'));
+	printf("%s\n",ft_strtrim("abc def\tghi", " \t"));
 }
