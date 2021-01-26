@@ -6,5 +6,10 @@
 
 int main(void)
 {
-	printf("%s\n",ft_strtrim(" abcdeftghi\t", " \t"));
+	char **res = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	while (*res)
+	{
+		printf("%s\n", *res);
+		res++;
+	}
 }

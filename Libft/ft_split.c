@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:01:52 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/26 13:57:48 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/26 15:54:23 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	size_t	i;
+	size_t	j;
 	size_t	start;
 
 	i = 0;
-	
+	j = 0;
 	if (!(res = (char**)calloc(count(s, c) + 1, sizeof(char *))))
 		return (NULL);
 	while (*(s + i))
@@ -54,10 +55,10 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (i > start)
 		{
-			if (!(*(res++) = ft_substr(s, start, i - start)))
+			if (!(*(res + j++) = ft_substr(s, start, i - start)))
 				return (NULL);
 		}
 	}
-	*(res) = NULL;
+	*(res + j) = NULL;
 	return (res);
 }
