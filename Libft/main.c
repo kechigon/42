@@ -6,10 +6,5 @@
 
 int main(void)
 {
-	char **res = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
-	while (*res)
-	{
-		printf("%s\n", *res);
-		res++;
-	}
+	printf("%s\n", ft_itoa(-2147483648LL));
 }

@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:01:52 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/26 15:54:23 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:03:36 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static size_t	count(const char *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**res;
 	size_t	i;
