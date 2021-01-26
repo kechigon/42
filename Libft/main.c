@@ -6,5 +6,5 @@
 
 int main(void)
 {
-	printf("%s\n",ft_strtrim("abc def\tghi", " \t"));
+	printf("%s\n",ft_strtrim(" abcdeftghi\t", " \t"));
 }
