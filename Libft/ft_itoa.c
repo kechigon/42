@@ -6,13 +6,13 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:09:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/26 18:19:06 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/26 20:56:43 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	countDigit(long n)
+static int	count_digit(long n)
 {
 	int ans;
 
@@ -44,7 +44,7 @@ char		*ft_itoa(int n)
 	int		digit;
 
 	cast = (long)n;
-	digit = countDigit(cast);
+	digit = count_digit(cast);
 	if (n < 0)
 	{
 		if (!(res = (char *)calloc(digit + 3, sizeof(char))))
