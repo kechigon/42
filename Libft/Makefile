@@ -10,8 +10,8 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${AR} ${NAME} ${OBJS}
 
-${OBJS}: ${SRCS}
-	gcc ${CFLAG} ${SRCS}
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	${RM} ${OBJS}
