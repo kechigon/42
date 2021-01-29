@@ -6,5 +6,5 @@
 
 int main(void)
 {
-	printf("%s\n", ft_strjoin("where is my ", "malloc ???"));
+	printf("%ld\n", ft_strlen(ft_itoa(0)));
 }
