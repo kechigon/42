@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 15:50:57 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/27 15:57:44 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/30 03:23:18 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char *s;
+	char c;
+	long l;
 
-	s = ft_itoa(n);
-	while (*s)
-		write(fd, s++, 1);
+	l = n;
+	if (l < 0)
+	{
+		write(fd, "-", 1);
+		l *= -1;
+	}
+	if (l < 10)
+	{
+		c = '0' + l;
+		write(fd, &c, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(l / 10, fd);
+		ft_putnbr_fd(l % 10, fd);
+	}
 }
