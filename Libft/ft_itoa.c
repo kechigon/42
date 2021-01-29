@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:09:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/26 20:56:43 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/30 03:01:09 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		*ft_itoa(int n)
 	digit = count_digit(cast);
 	if (n < 0)
 	{
-		if (!(res = (char *)calloc(digit + 3, sizeof(char))))
+		if (!(res = (char *)ft_calloc(digit + 3, sizeof(char))))
 			return (NULL);
 		*res = '-';
 		convert(res + 1, -cast, digit);
