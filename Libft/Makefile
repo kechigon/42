@@ -17,6 +17,7 @@ ${NAME}: ${OBJS}
 
 clean:
 	${RM} ${OBJS}
+	${RM} ${B_OBJS}
 
 fclean: clean
 	${RM} ${NAME}
