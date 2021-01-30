@@ -6,5 +6,8 @@
 
 int main(void)
 {
-	printf("%ld\n", ft_strlen(ft_itoa(0)));
+	void *p = malloc(3);
+	printf("%p\n", p);
+	free(p);
+	printf("%p\n", p);
 }
