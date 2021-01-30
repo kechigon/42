@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 19:00:41 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/30 17:26:02 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/01/30 23:24:35 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ t_list	*ft_lstnew(void *content)
 	if (!(element = (t_list *)malloc(sizeof(t_list))))
 		return (NULL);
 	element->content = content;
+	element->next = NULL;
 	return (element);
 }
