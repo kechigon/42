@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 16:44:37 by kkurita           #+#    #+#             */
-/*   Updated: 2021/01/30 01:19:33 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/02/02 15:26:48 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (cpy);
 	}
 	ft_memcpy(cpy, s + start, len);
-	*(cpy + len + 1) = '\0';
+	*(cpy + len) = '\0';
 	return (cpy);
 }
