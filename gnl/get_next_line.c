@@ -6,12 +6,11 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:33:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/02/23 18:58:29 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/02/24 00:56:35 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	mult_free(char *stock, char *buf, char *pre_line, char *line)
 {
@@ -26,6 +25,7 @@ int	mult_free(char *stock, char *buf, char *pre_line, char *line)
 	return (-1);
 }
 
+//eof後に実行するとバグる
 int	get_next_line(int fd, char **line)
 {
 	static char	*stock;
@@ -41,9 +41,8 @@ int	get_next_line(int fd, char **line)
 	//例外処理
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
-	stock_len = 0;
-	//ストックから読み込む
 	pre_line = NULL;
+	//ストックから読み込む
 	if (stock)
 	{
 		stock_len = ft_strlen(stock);
@@ -77,11 +76,25 @@ int	get_next_line(int fd, char **line)
 		return (mult_free(NULL, buf, pre_line, NULL));
 	*stock = '\0';
 	stock_count = 0;
-	//改行やEOFが現れるまでBUFFER_SIZE分呼び込む
+	//改行や読み終わるまでBUFFER_SIZE分呼び込む
 	while (1)
 	{
 		if ((read_res = read(fd, buf, BUFFER_SIZE)) == -1)
 			return (mult_free(stock, buf, pre_line, NULL));
+		//読み終わったら
+		if (read_res == 0)
+		{
+			if (!(*line = ft_strdup(stock)))
+				return (mult_free(stock, buf, pre_line, NULL));
+			free(buf);
+			free(stock);
+			if (pre_line)
+			{
+				if (!(*line = ft_strjoin(pre_line, *line)))
+					return (mult_free(NULL, NULL, pre_line, *line));
+			}
+			return (0);
+		}
 		*(buf + read_res) = '\0';
 		//改行があった場合
 		if ((endl = ft_strchr(buf, '\n')))

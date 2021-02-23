@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:35:43 by kkurita           #+#    #+#             */
-/*   Updated: 2021/02/20 13:18:50 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/02/23 23:02:02 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ size_t	ft_strlen(const char *s)
 	while (*s++)
 		len++;
 	return (len);
+}
+
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*cpy;
+
+	len = ft_strlen(s) + 1;
+	if (!(cpy = malloc(len)))
+		return (NULL);
+	return ((char *)ft_memcpy(cpy, s, len));
 }
 
 //s1,s2は動的確保と仮定
