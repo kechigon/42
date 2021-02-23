@@ -15,6 +15,9 @@ int main(int argc, char **args)
 	printf("%d\n", get_next_line(fd, res));
 	printf("%s\n", *res);
 	free(*res);
+	printf("%d\n", get_next_line(fd, res));
+	printf("%s\n", *res);
+	free(*res);
 	/*if (argc != 2)
 		return 0;
 	char **res;
