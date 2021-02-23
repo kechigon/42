@@ -1,0 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/13 19:33:39 by kkurita           #+#    #+#             */
+/*   Updated: 2021/02/23 16:53:59 by kkurita          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+#include <stdio.h>
+
+int	mult_free(char *stock, char *buf, char *pre_line, char *line)
+{
+	if (stock)
+		free(stock);
+	if (buf)
+		free(buf);
+	if (pre_line)
+		free(pre_line);
+	if (line)
+		free(line);
+	return (-1);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*stock;
+	char		*buf;
+	char		*endl;
+	size_t		endl_index;
+	size_t		stock_count;
+	ssize_t		read_res;
+	size_t		stock_len;
+	char		*pre_line;
+
+	//例外処理
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
+		return (-1);
+	stock_len = 0;
+	//ストックから読み込む
+	pre_line = NULL;
+	if (stock)
+	{
+		//if ((endl = ft_strchr(stock, '\n')))
+		stock_len = ft_strlen(stock);
+		if (!(pre_line = (char *)malloc((stock_len + 1) * sizeof(char))))
+			return (mult_free(stock, NULL, NULL, NULL));
+		ft_memcpy(pre_line, stock, stock_len);
+		*(pre_line + stock_len) = '\0';
+		free(stock);
+	}
+	if (!(buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
+		mult_free(NULL, NULL, pre_line, NULL);
+	if (!(stock = (char *)malloc(sizeof(char))))
+		mult_free(NULL, buf, pre_line, NULL);
+	*stock = '\0';
+	stock_count = 0;
+	//改行やEOFが現れるまでBUFFER_SIZE分呼び込む
+	while (1)
+	{
+		if ((read_res = read(fd, buf, BUFFER_SIZE)) == -1)
+			mult_free(stock, buf, pre_line, NULL);
+		*(buf + read_res) = '\0';
+		//改行があった場合
+		if ((endl = ft_strchr(buf, '\n')))
+		{
+			endl_index = endl - buf;
+			if (!(*line = (char *)malloc((BUFFER_SIZE * stock_count + endl_index + 1) * sizeof(char))))
+				mult_free(stock, buf, pre_line, NULL);
+			//stockとbufの\nまでをlineにコピー
+			ft_memcpy(*line, stock, BUFFER_SIZE * stock_count);
+			ft_memcpy(*line + BUFFER_SIZE * stock_count, buf, endl_index);
+			*(*line + BUFFER_SIZE * stock_count + endl_index) = '\0';
+			free(stock);
+			//前回のgnlで読み取った分とstrjoin
+			if (pre_line)
+			{
+				if (!(*line = ft_strjoin(pre_line, *line)))
+					mult_free(NULL, buf, pre_line, *line);
+			}
+			//改行以降をstockにコピー
+			if (!(stock = (char *)malloc((BUFFER_SIZE - endl_index) * sizeof(char))))
+				mult_free(NULL, buf, NULL, *line);
+			ft_memcpy(stock, buf + endl_index + 1, BUFFER_SIZE - endl_index - 1);
+			*(stock + (BUFFER_SIZE - endl_index - 1)) = '\0';
+			free(buf);
+			return (1);
+		}
+		//EOFがあった場合
+		//なかった場合
+		else
+		{
+			if (!(stock = ft_strjoin(stock, buf)))
+				mult_free(stock, buf, pre_line, NULL);
+			stock_count++;
+			if (!(buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
+				mult_free(stock, NULL, pre_line, NULL);
+		}
+	}
+}
