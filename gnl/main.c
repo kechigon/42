@@ -26,14 +26,17 @@ int main(int argc, char **args)
 	int n;
 	if (!args[1][1] && c == '0')
 	{
-		while ((n = get_next_line(0, res)))
+		while (1)
 		{
+			n = get_next_line(0, res);
 			if (n == -1)
 			{
 				printf("gnl erorr\n");
 				return (1);
 			}
 			printf("%s\n", *res);
+			if (!n)
+				break;
 		}
 	}
 	else
@@ -41,14 +44,17 @@ int main(int argc, char **args)
 		int fd = open(args[1], O_RDONLY);
 		if (fd != -1)
 		{
-			while ((n = get_next_line(fd, res)))
+			while (1)
 			{
+				n = get_next_line(fd, res);
 				if (n == -1)
 				{
 					printf("gnl erorr\n");
 					return (1);
 				}
 				printf("%s\n", *res);
+				if (!n)
+					break;
 			}
 		}
 		close(fd);

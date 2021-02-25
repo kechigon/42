@@ -56,18 +56,18 @@ int	get_next_line(int fd, char **line)
 			ft_memcpy(*line, stock, endl_index);
 			*(*line + endl_index) = '\0';
 			//残りをまたstockとする
-			if (!(tmp = (char *)malloc((stock_len - endl_index) * sizeof(char))))
+			if (!(tmp = ft_strdup(stock + endl_index + 1)))
+				return (mult_free(stock, NULL, NULL, *line));
+			/*if (!(tmp = (char *)malloc((stock_len - endl_index) * sizeof(char))))
 				return (mult_free(stock, NULL, NULL, *line));
 			ft_memcpy(tmp, stock + endl_index + 1, stock_len - endl_index - 1);
-			*(tmp + (stock_len - endl_index - 1)) = '\0';
+			*(tmp + (stock_len - endl_index - 1)) = '\0';*/
 			free(stock);
 			stock = tmp;
 			return (1);
 		}
-		if (!(pre_line = (char *)malloc((stock_len + 1) * sizeof(char))))
+		if (!(pre_line = ft_strdup(stock)))
 			return (mult_free(stock, NULL, NULL, NULL));
-		ft_memcpy(pre_line, stock, stock_len);
-		*(pre_line + stock_len) = '\0';
 		free(stock);
 	}
 	if (!(buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
@@ -114,10 +114,12 @@ int	get_next_line(int fd, char **line)
 					return (mult_free(NULL, buf, pre_line, *line));
 			}
 			//改行以降をstockにコピー
-			if (!(stock = (char *)malloc((read_res - endl_index) * sizeof(char))))
+			if (!(stock = ft_strdup(buf + endl_index + 1)))
+				return (mult_free(NULL, buf, NULL, *line));
+			/*if (!(stock = (char *)malloc((read_res - endl_index) * sizeof(char))))
 				return (mult_free(NULL, buf, NULL, *line));
 			ft_memcpy(stock, buf + endl_index + 1, read_res - endl_index - 1);
-			*(stock + (read_res - endl_index - 1)) = '\0';
+			*(stock + (read_res - endl_index - 1)) = '\0';*/
 			free(buf);
 			return (1);
 		}
