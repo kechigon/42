@@ -63,7 +63,6 @@ char	*ft_strdup(const char *s)
 	return ((char *)ft_memcpy(cpy, s, len));
 }
 
-//s1,s2は動的確保と仮定
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*cpy;
