@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	mult_free_ret_minus(char *stock, char *buf, char *pre_line, char *line)
+int		mult_free_ret_minus(char *stock, char *buf, char *pre_line, char *line)
 {
 	if (stock)
 		free(stock);
@@ -25,7 +25,35 @@ int	mult_free_ret_minus(char *stock, char *buf, char *pre_line, char *line)
 	return (-1);
 }
 
-int	get_next_line(int fd, char **line)
+/*char*	put_string(char *stock, char *buf, char *endl, size_t stock_count)
+{
+	size_t	endl_index;
+	char	*tmp;
+	char	*res;
+
+	(void)buf;
+	(void)stock_count;
+	endl_index = endl - stock;
+	//resに改行までコピー
+	if (!(res= (char *)malloc((endl_index + 1) * sizeof(char))))
+	{
+		mult_free_ret_minus(stock, NULL, NULL, NULL);
+		return (NULL);
+	}
+	ft_memcpy(res, stock, endl_index);
+	*(res + endl_index) = '\0';
+	//残りをまたstockとする
+	if (!(tmp = ft_strdup(stock + endl_index + 1)))
+	{
+		mult_free_ret_minus(stock, NULL, NULL, res);
+		return (NULL);
+	}
+	free(stock);
+	stock = tmp;
+	return (res);
+}*/
+
+int		get_next_line(int fd, char **line)
 {
 	static char	*stock;
 	char		*buf;
@@ -41,6 +69,7 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	pre_line = NULL;
+	//stock_count = 0;
 	//ストックから読み込む
 	if (stock)
 	{
@@ -49,7 +78,7 @@ int	get_next_line(int fd, char **line)
 		if ((endl = ft_strchr(stock, '\n')))
 		{
 			endl_index = endl - stock;
-			//*lineに改行までコピー
+			// *lineに改行までコピー
 			if (!(*line = (char *)malloc((endl_index + 1) * sizeof(char))))
 				return (mult_free_ret_minus(stock, NULL, NULL, NULL));
 			ft_memcpy(*line, stock, endl_index);
@@ -59,6 +88,8 @@ int	get_next_line(int fd, char **line)
 				return (mult_free_ret_minus(stock, NULL, NULL, *line));
 			free(stock);
 			stock = tmp;
+			/*if (!(*line = create_string(stock, NULL, endl, stock_count)))
+				return (-1);*/
 			return (1);
 		}
 		if (!(pre_line = ft_strdup(stock)))
@@ -103,16 +134,16 @@ int	get_next_line(int fd, char **line)
 			ft_memcpy(*line + BUFFER_SIZE * stock_count, buf, endl_index);
 			*(*line + BUFFER_SIZE * stock_count + endl_index) = '\0';
 			free(stock);
+			//改行以降をstockにコピー
+			if (!(stock = ft_strdup(buf + endl_index + 1)))
+				return (mult_free_ret_minus(NULL, buf, pre_line, *line));
+			free(buf);
 			//前回のgnlで読み取った分とstrjoin
 			if (pre_line)
 			{
 				if (!(*line = ft_strjoin(pre_line, *line)))
-					return (mult_free_ret_minus(NULL, buf, pre_line, *line));
+					return (mult_free_ret_minus(NULL, NULL, pre_line, *line));
 			}
-			//改行以降をstockにコピー
-			if (!(stock = ft_strdup(buf + endl_index + 1)))
-				return (mult_free_ret_minus(NULL, buf, NULL, *line));
-			free(buf);
 			return (1);
 		}
 		//なかった場合

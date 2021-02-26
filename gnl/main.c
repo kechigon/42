@@ -3,7 +3,7 @@
 
 int main(int argc, char **args)
 {
-	(void)argc;
+	/*(void)argc;
 	int fd = open(args[1], O_RDONLY);
 	char *str = NULL;
 	char **res;
@@ -16,8 +16,8 @@ int main(int argc, char **args)
 	free(*res);
 	printf("%d\n", get_next_line(fd, res));
 	printf("%s\n", *res);
-	free(*res);
-	/*if (argc != 2)
+	free(*res);*/
+	if (argc != 2)
 		return 0;
 	char **res;
 	char *s = NULL;
@@ -58,5 +58,5 @@ int main(int argc, char **args)
 			}
 		}
 		close(fd);
-	}*/
+	}
 }
