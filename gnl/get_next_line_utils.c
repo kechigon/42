@@ -12,20 +12,22 @@
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strchr(const char *s, int c)
 {
 	char			*str;
 	unsigned char	uc;
+	size_t			res;
 
 	str = (char *)s;
 	uc = (unsigned char)c;
-	while (*str)
+	res = 0;
+	while (*(str + res))
 	{
-		if (*str == uc)
-			return (str);
-		str++;
+		if (*(str + res) == uc)
+			return (res);
+		res++;
 	}
-	return (NULL);
+	return (res);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
