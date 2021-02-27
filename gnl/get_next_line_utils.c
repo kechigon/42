@@ -63,20 +63,16 @@ char	*ft_strdup(const char *s)
 	return ((char *)ft_memcpy(cpy, s, len));
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, size_t s2len)
 {
 	char	*cpy;
 	size_t	s1len;
-	size_t	s2len;
 
 	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
 	if (!(cpy = (char *)malloc((s1len + s2len + 1) * sizeof(char))))
 		return (NULL);
 	ft_memcpy(cpy, s1, s1len);
 	ft_memcpy(cpy + s1len, s2, s2len);
-	*(cpy + s1len + s2len) = '\0';
-	free(s1);
-	free(s2);
+	*(cpy + s1len + s2len) = 0;
 	return (cpy);
 }

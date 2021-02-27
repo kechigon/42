@@ -34,7 +34,7 @@ int main(int argc, char **args)
 				printf("gnl erorr\n");
 				return (1);
 			}
-			printf("%s\n", *res);
+			printf("%d %s\n", n, *res);
 			if (!n)
 				break;
 		}
@@ -52,7 +52,7 @@ int main(int argc, char **args)
 					printf("gnl erorr\n");
 					return (1);
 				}
-				printf("%s\n", *res);
+				printf("%d %s\n", n, *res);
 				if (!n)
 					break;
 			}
