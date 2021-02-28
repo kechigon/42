@@ -23,31 +23,31 @@ int		mult_free_ret_minus(char *line, char *stock, char *buf)
 	return (-1);
 }
 
-char	pre_create_string(char **line, char *stock)
+char	pre_create_string(char **line, char **stockp)
 {
 	char	retval;
 	size_t	n;
 	char	*tmp;
 
-	n = ft_strchr(stock, '\n');
-	if (!(tmp = ft_strjoin(*line, stock, n)))
-		return (mult_free_ret_minus(*line, stock, NULL));
+	n = ft_strchr(*stockp, '\n');
+	if (!(tmp = ft_strjoin(*line, *stockp, n)))
+		return (mult_free_ret_minus(*line, *stockp, NULL));
 	free(*line);
 	*line = tmp;
 	tmp = NULL;
 	retval = 0;
-	if (*(stock + n) == '\n')
+	if (*(*stockp + n) == '\n')
 	{
-		if (!(tmp = ft_strdup(stock + n + 1)))
-			return (mult_free_ret_minus(*line, stock, NULL));
+		if (!(tmp = ft_strdup(*stockp + n + 1)))
+			return (mult_free_ret_minus(*line, *stockp, NULL));
 		retval = 1;
 	}
-	free(stock);
-	stock = tmp;
+	free(*stockp);
+	*stockp = tmp;
 	return (retval);
 }
 
-char	create_string(char **line, char *stock, char *buf)
+char	create_string(char **line, char **stockp, char *buf)
 {
 	char	retval;
 	size_t	n;
@@ -61,7 +61,7 @@ char	create_string(char **line, char *stock, char *buf)
 	retval = 0;
 	if (*(buf + n) == '\n')
 	{
-		if (!(stock = ft_strdup(buf + n + 1)))
+		if (!(*stockp = ft_strdup(buf + n + 1)))
 			return (mult_free_ret_minus(*line, NULL, buf));
 		retval = 1;
 	}
@@ -70,6 +70,7 @@ char	create_string(char **line, char *stock, char *buf)
 
 int		get_next_line(int fd, char **line)
 {
+	static char	**stockp;
 	static char	*stock;
 	char		*buf;
 	//char		*endl;
@@ -82,8 +83,9 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	**line = 0;
 	retval = 0;
-	if (stock)
-	 retval = pre_create_string(line, stock);
+	stockp = &stock;
+	if (*stockp)
+		retval = pre_create_string(line, stockp);
 	/*{
 		if ((endl = ft_strchr(stock, '\n')))
 		{
@@ -113,11 +115,11 @@ int		get_next_line(int fd, char **line)
 	while ((read_res = read(fd, buf, BUFFER_SIZE)) > 0 && retval == 0)
 	{
 		*(buf + read_res) = 0;
-		retval = create_string(line, stock, buf);
+		retval = create_string(line, stockp, buf);
 	}
 	free(buf);
 	if (read_res == -1)
-		return (mult_free_ret_minus(*line, stock, NULL));
+		return (mult_free_ret_minus(*line, *stockp, NULL));
 	return (retval);
 	/*free(buf);
 	if (retval == -1)
