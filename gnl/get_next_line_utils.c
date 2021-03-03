@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:35:43 by kkurita           #+#    #+#             */
-/*   Updated: 2021/02/23 23:02:02 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/03/03 15:58:33 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*ft_strjoin(char *s1, char *s2, size_t s2len)
 	size_t	s1len;
 
 	s1len = ft_strlen(s1);
-	if (!(cpy = (char *)malloc((s1len + s2len + 1) * sizeof(char))))
+	if (!(cpy = malloc(s1len + s2len + 1)))
 		return (NULL);
 	ft_memcpy(cpy, s1, s1len);
 	ft_memcpy(cpy + s1len, s2, s2len);

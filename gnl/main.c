@@ -35,6 +35,7 @@ int main(int argc, char **args)
 				return (1);
 			}
 			printf("%d %s\n", n, *res);
+			free(*res);
 			if (!n)
 				break;
 		}
@@ -53,6 +54,7 @@ int main(int argc, char **args)
 					return (1);
 				}
 				printf("%d %s\n", n, *res);
+				free(*res);
 				if (!n)
 					break;
 			}

@@ -1,5 +1,5 @@
 NAME = get_next_line
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=4 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=32 -g -fsanitize=address
 RM = rm -rf
 
 all: ${NAME}
