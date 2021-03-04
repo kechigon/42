@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:33:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/03/03 15:57:12 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/03/04 19:43:02 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	create_string(char **line, char **stockp, char *buf)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	**stockp;
+	char		**stockp;
 	static char	*stock;
 	char		*buf;
 	ssize_t		read_res;
