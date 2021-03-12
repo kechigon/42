@@ -6,7 +6,7 @@
 /*   By: kkurita <kkurita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 19:33:39 by kkurita           #+#    #+#             */
-/*   Updated: 2021/03/04 19:43:02 by kkurita          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:49:20 by kkurita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ char	create_string(char **line, char **stockp, char *buf)
 
 int		get_next_line(int fd, char **line)
 {
-	char		**stockp;
 	static char	*stock;
 	char		*buf;
 	ssize_t		read_res;
@@ -81,18 +80,17 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	**line = 0;
 	retval = 0;
-	stockp = &stock;
-	if (*stockp)
-		retval = pre_create_string(line, stockp);
-	if (!(buf = malloc(BUFFER_SIZE + 1)))
+	if (stock)
+		retval = pre_create_string(line, &stock);
+	if (!(buf = malloc((long long)BUFFER_SIZE + 1)))
 		return (mult_free_ret_minus(*line, NULL, NULL));
 	while (retval == 0 && (read_res = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		*(buf + read_res) = 0;
-		retval = create_string(line, stockp, buf);
+		retval = create_string(line, &stock, buf);
 	}
 	free(buf);
 	if (read_res == -1)
-		return (mult_free_ret_minus(*line, *stockp, NULL));
+		return (mult_free_ret_minus(*line, stock, NULL));
 	return (retval);
 }

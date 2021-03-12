@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdint.h>
 
 int main()
 {
-	printf("%3.3d\n", 0b1100);
+	printf("%zu\n", SIZE_MAX);
+	long n = 100000 * 100000;
+	printf("%ld\n", n);
 }
